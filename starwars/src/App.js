@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Starwarslist from"./components/Starwarslist.js"
+import axios from "axios"
 
 const App = () => {
+  const [starwars, setStarwars] = useState([])
+
+  axios.get("https://swapi.co/api/people/").then(res => {
+    setStarwars(res.data.results.map(s => s.name))
+  })
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -12,7 +19,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <Starwarslist starwars={starwars} />
     </div>
+   
+   
   );
 }
 
