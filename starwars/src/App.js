@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Starwarslist from"./components/Starwarslist.js"
 import Pagination from "./components/Pagination"
+import Cards from "./components/Cards/cards.js"
 import axios from "axios"
 
 const App = () => {
@@ -44,10 +45,20 @@ const App = () => {
   // sync up with, if any.
 
   return (
-    <div className="App">
+    <div className="Character">
+      {starwars.map(Character => {
+        return (
+          <Cards
+          name={res.name}
+          species={res.species}
+          homeworld={res.homeworld}
+          key={res.id}
+        )
+      })}
       <h1 className="Header">React Wars</h1>
       <>
         <Starwarslist starwars={starwars} />
+        <Cards  />
         <Pagination 
           gotoNextPage={nextPageUrl ? gotoNextPage : null}
           gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
