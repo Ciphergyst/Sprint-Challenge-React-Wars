@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Starwarslist from"./components/Starwarslist.js"
 import Pagination from "./components/Pagination"
-import Cards from "./components/Cards/cards.js"
+import Cards from "./components/Cards/cards";
+
+
+import { Container, Row } from "reactstrap";
+import { Card, CardText, CardBody, CardTitle, CardImg, Col } from "reactstrap";
+import styled from 'styled-components';
 import axios from "axios"
 
 const App = () => {
@@ -45,27 +50,36 @@ const App = () => {
   // sync up with, if any.
 
   return (
-    <div className="Character">
-      {starwars.map(Character => {
-        return (
-          <Cards
-          name={res.name}
-          species={res.species}
-          homeworld={res.homeworld}
-          key={res.id}
-        )
-      })}
-      <h1 className="Header">React Wars</h1>
-      <>
-        <Starwarslist starwars={starwars} />
-        <Cards  />
-        <Pagination 
+    <Container>
+      <Row>
+    
+        {starwars.map(starwars => {
+         return (
+           <Cards
+             Title={starwars.name}
+             species={starwars.species}
+             homeworld={starwars.homeworld}
+             key={starwars.id}
+           />
+         );
+       })}
+       <h1 className="Header">React Wars</h1>
+       <>
+         <Starwarslist starwars={starwars} />
+         <Card />
+         <CardText species={starwars.species} />
+         <CardBody homeworld={starwars.homeworld} />
+         <CardTitle Title={starwars.name} />
+         <CardImg />
+         <Col />
+         
+         <Pagination 
           gotoNextPage={nextPageUrl ? gotoNextPage : null}
           gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
         />
-      </>
-    </div>
-   
+       </>
+     </Row>
+    </Container>
    
   );
 }

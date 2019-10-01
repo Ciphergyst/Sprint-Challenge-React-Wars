@@ -1,18 +1,13 @@
-import React from "react";
-import  { Starwarslist }from "./components/Starwarslist"
+import React from 'react';
+import { Card, Button, CardHeader, CardFooter, CardBody,
+  CardTitle, CardText } from 'reactstrap';
+  import "starwars/src/App.js";
 
-const Cards = props => {
+  const Cards = props => {
     return (
-        <div className="characterCard" key={props.id}>
-         <img className="characterPhoto" alt="Star Wars Character" src={props.imgUrl} />
-         <h2>{props.name}</h2>
-            <h3>{props.species}</h3>
-            <h4>{props.homeworld}</h4>
-        </div>    
+      <div>
+        
     );
-};
-
-export default Cards;
-
-
-
+  };
+  
+  export default Cards;

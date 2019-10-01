@@ -1,4 +1,5 @@
 import React from 'react'
+import starwarsCharacters from "./Cards/cards"
 
 export default function Starwarslist({ starwars }) {
     return (
